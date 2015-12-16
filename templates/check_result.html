@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+{% block title %}PyIDE{% endblock %}
+{% block content %}
+        {% if error %}
+            <h2>{{ error }}</h2>
+        {% else %}
+            {% if result %}
+                <h1 class="inline-header">Well...</h1><br>
+            {% else %}
+                <h1 class="inline-header">All right</h1>
+            {% endif %}
+
+			Your Code looks not perfect, but you can save formatted one!<br>
+
+                     <button type="submit" class="btn btn-warning" a href="#" onclick="saveSubmit('/savecode', true">Save cool code</button>
+            {%  if result %}
+                <table class="table" id="result_table">
+                    <thead>
+                    <tr>
+                        <th>
+                            Error
+                        </th>
+                        <th>
+                            Line #
+                        </th>
+                        <th>
+                            Column #
+                        </th>
+                        <th>
+                            Description
+                        </th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for res in result %}
+                        <tr class="tr-result">
+                            <td>
+                                {% if res.type == "W" %}
+                                    <span class="label label-warning">W{{ res.code }}</span>
+                                {% elif res.type == "E" %}
+                                    <span class="label label-important">E{{ res.code }}</span>
+                                {% endif %}
+                            </td>
+                            <td>
+                                {{ res.line }}
+                            </td>
+                            <td>
+                                {{ res.place }}
+                            </td>
+                            <td>
+                                {{ res.text }}
+                            </td>
+                        </tr>
+                    {% endfor %}
+
+                    </tbody>
+                </table>
+            {% endif %}
+        {%  endif %}
+ {% if error %}
+            <a href="/{{ back_url }}" class="btn"><i class="icon-arrow-left"></i> Back</a>
+        {%  else %}
+
+            <iframe class="hidden" name="save"></iframe>
+            <form class="hidden" name="original_code" action="" method="post">
+                <input type="hidden" id="orig_code" name="orig_code" value="{{ code_text }}">
+                <input type="hidden" id="orig_results" name="orig_results"
+                       value="{% for res in result -%}
+                                {{ res.type }}{{ res.code }}:{{ res.line }}:{{ res.place }}:{{ res.text }}
+                                {%- if not loop.last -%}:::{%- endif %}
+                              {%- endfor %}">
+            </form>
+
+    {% endif %}
+
+{% endblock %}

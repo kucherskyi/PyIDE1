@@ -1,0 +1,56 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+
+
+    <script src="/static/js/jquery.js" type="text/javascript"></script>
+
+    <link rel="stylesheet" href="/static/css/bootstrap.css" type="text/css">
+    <script src="/static/js/bootstrap-dropdown.js" type="text/javascript"></script>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/css/style.css" type="text/css">
+    {% block additional_head %}{% endblock %}
+    <title>{% block title %}PyIDE{% endblock %}</title>
+</head>
+<body>
+
+    <div class="navbar">
+        <div class="navbar-inner">
+            <ul class="nav">
+                <li>
+                    <a href="/">Home</a>
+                </li>
+
+            </ul>
+            <ul class="nav pull-right">
+                <li>
+                    <a href="#">Here should be login</a>
+                </li>
+            </ul>
+
+        </div>
+    </div>
+    <div class="page-header">
+		 <img src="static/img/pyide.png" style="margin-left:44%"> 
+    </div>
+
+<div class="container">
+    {% block content %}
+
+        {% endblock %}
+</div>
+<div class="container">
+    <hr>
+    <footer class="footer">
+		    <div class="span6">
+            Made with Raspberry Pi + Apache + Python + Flask + Bootstrap.
+            Presentation <a href="http://slides.com/artemkucherskyy/deck">here</a>.<br>
+            Github <a href="https://github.com/kucherskyi/PyIDE">here</a>
+            &nbsp;
+        </div>
+
+    </footer>
+</div>
+
+</body>
+</html>

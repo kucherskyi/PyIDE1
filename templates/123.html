@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block content %}
+Hello,<br>
+
+  <form action="/123" method=post>
+    {{ form.hidden_tag() }}
+
+    {{ form.message.label }}
+    {{ form.message }}
+ 
+    {{ form.submit }}
+	
+	
+
+
+	
+{% endblock %}
