@@ -9,19 +9,14 @@ import autopep8
 
 
 def template_pep8(temp):
+    """
+    Template variable from pep8 
+    """
     return {'type': temp[3][1],
             'code': temp[3][2:5],
             'line': temp[1],
             'place': temp[2],
             'text': temp[3][6:]}
-
-
-def template_results(temp):
-    return {'type': temp[0][0],
-            'code': temp[0][1:],
-            'line': temp[1],
-            'place': temp[2],
-            'text': temp[3]}
 
 
 def pep8parser(strings, temp_dict_f=template_pep8):
